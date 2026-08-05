@@ -1,4 +1,5 @@
 (()=>{
+const brand=document.createElement('link');brand.rel='stylesheet';brand.href='brand-v2.css';document.head.appendChild(brand);const theme=document.querySelector('meta[name="theme-color"]');if(theme)theme.content='#262f40';
 const euro=new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0});
 const num=new Intl.NumberFormat('it-IT');
 const params=new URLSearchParams(location.search);let partner=(params.get('partner')||params.get('azienda')||params.get('nome')||'').trim().replace(/[<>]/g,'').slice(0,80);
