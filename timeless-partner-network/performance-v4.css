@@ -7,10 +7,14 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .progress,.scroll-cue,.motion-orb,.motion-rail,.motion-spotlight{display:none!important}
 *,*::before,*::after{animation:none!important;transition:none!important}
 .reveal,.motion-target,.motion-word,.hero-content>*{opacity:1!important;transform:none!important;filter:none!important}
-.visual-card img,.hero-bg{transform:none!important}
+.visual-card img{transform:none!important}
+
+/* The original hero image used a negative inset and 108% width. The global image max-width then clamped it to 100%, shifting it left and exposing a blank strip on the right. */
+.hero{position:relative!important;overflow:hidden!important}
+.hero-bg{position:absolute!important;inset:0!important;top:0!important;right:auto!important;bottom:auto!important;left:0!important;display:block!important;width:100%!important;min-width:100%!important;max-width:none!important;height:100%!important;min-height:100%!important;object-fit:cover!important;object-position:center center!important;transform:none!important}
 
 /* Never calculate the page shell from 100vw: mobile browser chrome and scrollbars can make it wider than the visible page. */
-.shell,.header-inner{width:100%!important;max-width:1180px!important;margin-left:auto!important;margin-right:auto!important;padding-left:17px!important;padding-right:17px!important}
+.shell,.header-inner{box-sizing:border-box;width:100%!important;max-width:1180px!important;margin-left:auto!important;margin-right:auto!important;padding-left:17px!important;padding-right:17px!important}
 .story-grid>*,.system-grid>*,.eco-grid>*,.role-grid>*,.tech-layout>*,.tech-guest-owner>*,.booking-examples>*,.promise-grid>*,.footer-inner>*,.calc-row>*,.owner-head>*,.tech-lab-label>*{min-width:0}
 .lead,.proposal-tag,.proposal-tag span,.closing-partner,.role,.system-card,.step,.booking-card,.calculator,.eco-card,.promise-card,.tech-platform,[data-partner],[data-extra-sentence],[data-calc-partner]{overflow-wrap:anywhere;word-break:normal}
 .proposal-tag,.closing-partner{max-width:100%;white-space:normal}
