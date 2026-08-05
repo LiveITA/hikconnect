@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
+@import url('performance-v4.css');
 :root{--navy:#263041;--navy2:#1c2430;--navy3:#3c475d;--ivory:#faf8f4;--sand:#f3eee7;--taupe:#a07964;--taupe2:#c8aa99;--blue:#7a8394;--muted:#766b66;--line:rgba(44,36,33,.14);--shadow:0 28px 80px rgba(44,36,33,.14)}
 h1,h2,h3,.hero-stat strong,.visual-caption b,.role h3,.system-card h3,.step h3,.value-point strong,.calc-top b,.total-card strong,.eco-card b,.promise-card h3,.booking-card h3,.booking-step b{font-family:'EB Garamond',Georgia,serif}
 body{color:#2c2421}.model,.ecosystem{background:var(--navy)}.calculator{background:var(--navy)}.progress i{background:var(--taupe)}.hero:after{background:linear-gradient(180deg,rgba(38,48,65,.12),rgba(38,48,65,.43) 45%,rgba(38,48,65,.97)),linear-gradient(90deg,rgba(38,48,65,.78),transparent 72%)}
