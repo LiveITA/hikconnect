@@ -1,0 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
+:root{--navy:#262f40;--navy2:#1c2430;--navy3:#3c475d;--ivory:#faf8f5;--sand:#f3eee7;--taupe:#a37862;--taupe2:#c19e8b;--blue:#7a8394;--muted:#7e6f67;--line:rgba(44,36,33,.14);--shadow:0 28px 80px rgba(44,36,33,.14)}
+h1,h2,h3,.hero-stat strong,.visual-caption b,.role h3,.system-card h3,.step h3,.value-point strong,.calc-top b,.total-card strong,.eco-card b,.promise-card h3{font-family:'EB Garamond',Georgia,serif}
+body{color:#2c2421}.model,.ecosystem{background:#262f40}.calculator{background:#262f40}.marquee{background:#a37862}.marquee-track b{color:#faf8f5}.progress i{background:#a37862}.hero:after{background:linear-gradient(180deg,rgba(38,47,64,.12),rgba(38,47,64,.43) 45%,rgba(38,47,64,.97)),linear-gradient(90deg,rgba(38,47,64,.78),transparent 72%)}
