@@ -1,5 +1,6 @@
 (()=>{
 const techCss=document.createElement('link');techCss.rel='stylesheet';techCss.href='technology-v2.css';document.head.appendChild(techCss);
+const motionCss=document.createElement('link');motionCss.rel='stylesheet';motionCss.href='motion-v3.css';document.head.appendChild(motionCss);
 const systemSection=document.querySelector('.section.system');
 if(systemSection){
   const techSection=document.createElement('section');
@@ -62,4 +63,5 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const progress=document.querySelector('.progress i');
 const hero=document.querySelector('.hero-bg');
 addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;if(progress)progress.style.width=`${max?scrollY/max*100:0}%`;if(hero&&scrollY<innerHeight*1.1)hero.style.transform=`translate3d(0,${scrollY*.08}px,0) scale(1.02)`;},{passive:true});
+const motionScript=document.createElement('script');motionScript.src='motion-v3.js';motionScript.defer=true;document.body.appendChild(motionScript);
 })();
