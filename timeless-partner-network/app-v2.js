@@ -55,6 +55,65 @@ const num=new Intl.NumberFormat('it-IT');
 const params=new URLSearchParams(location.search);
 const partner=(params.get('partner')||params.get('azienda')||params.get('nome')||'').trim().replace(/[<>]/g,'').slice(0,80);
 const set=(selector,text)=>{const el=document.querySelector(selector);if(el)el.textContent=text};
+
+function personalizeVisibleCopy(name){
+  const roleLabel=document.querySelector('.role.partner .role-label');
+  if(roleLabel)roleLabel.textContent=`${name} · team territoriale`;
+  document.querySelectorAll('.timeline .step small').forEach(el=>{if(el.textContent.trim()==='Partner locale')el.textContent=name;});
+  const calcTitle=document.querySelector('.calculator .calc-top b');
+  if(calcTitle)calcTitle.textContent=`Simulazione annuale · portafoglio ${name}`;
+  const footerLabels=document.querySelectorAll('footer .footer-inner span');
+  if(footerLabels[0])footerLabels[0].textContent=`${name} · partner territoriale in Puglia`;
+
+  const replacements=[
+    ['Il partner viene coinvolto',`Il team di ${name} viene coinvolto`],
+    ['Il partner territoriale esegue',`${name} esegue`],
+    ['Il partner non deve',`${name} non deve`],
+    ['Il partner coordina',`${name} coordina`],
+    ['Il partner entra',`${name} entra`],
+    ['Il partner vede',`${name} vede`],
+    ['Il partner prepara',`${name} prepara`],
+    ['Il partner concorda',`${name} concorda`],
+    ['il partner concorda',`${name} concorda`],
+    ['il partner resta',`${name} resta`],
+    ['il partner concentra',`${name} concentra`],
+    ['il partner non anticipa',`${name} non anticipa`],
+    ['senza interrompere il partner locale',`senza interrompere ${name}`],
+    ['pagata direttamente al partner territoriale',`pagata direttamente a ${name}`],
+    ['pagati al partner',`pagati a ${name}`],
+    ['venduti dal partner',`venduti da ${name}`],
+    ['del partner territoriale',`di ${name}`],
+    ['al partner territoriale',`a ${name}`],
+    ['per il partner territoriale',`per ${name}`],
+    ['dal partner territoriale',`da ${name}`],
+    ['del partner locale',`di ${name}`],
+    ['al partner locale',`a ${name}`],
+    ['per il partner locale',`per ${name}`],
+    ['dal partner locale',`da ${name}`],
+    ['del partner',`di ${name}`],
+    ['al partner',`a ${name}`],
+    ['per il partner',`per ${name}`],
+    ['dal partner',`da ${name}`],
+    ['Il partner locale',name],
+    ['il partner locale',name],
+    ['Il partner territoriale',name],
+    ['il partner territoriale',name]
+  ];
+
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(node){
+    const parent=node.parentElement;
+    if(!parent||parent.closest('script,style,noscript'))return NodeFilter.FILTER_REJECT;
+    return node.nodeValue&&node.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+  }});
+  const nodes=[];
+  while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(node=>{
+    let text=node.nodeValue;
+    replacements.forEach(([from,to])=>{if(text.includes(from))text=text.split(from).join(to);});
+    if(text!==node.nodeValue)node.nodeValue=text;
+  });
+}
+
 if(partner){
   document.title=`Timeless Puglia × ${partner}`;
   const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=`Una proposta territoriale Timeless Puglia pensata per ${partner}.`;
@@ -65,6 +124,7 @@ if(partner){
   set('[data-personal-closing]',`La bellezza ci ha dato il punto di partenza. ${partner} può aiutarci a darle scala.`);
   set('[data-personal-badge]',`Una visione condivisa con ${partner}`);
   set('[data-extra-sentence]',`Il servizio extra venduto da ${partner} rimane interamente a ${partner}.`);
+  personalizeVisibleCopy(partner);
 }
 const properties=document.getElementById('properties');
 const bookings=document.getElementById('bookings');
